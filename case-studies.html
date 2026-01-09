@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html class="dark" lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BA FORUM - Case Studies Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "primary-light": "#fff7ed",
+                        "primary-dark": "#c2650a",
+                        "secondary": "#137fec",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#1a1510",
+                        "surface-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(135deg, #1A1D3D 0%, #2D3E6E 100%)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Lexend', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        html { scroll-behavior: smooth; }
+        .case-card { transition: all 0.3s ease; }
+        .case-card:hover { transform: translateY(-4px); }
+        .case-detail { display: none; }
+        .case-detail.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .filter-btn.active { background: rgba(236, 127, 19, 0.2); border-color: #ec7f13; color: #ec7f13; }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display overflow-x-hidden">
+
+<!-- ========== NAVIGATION ========== -->
+<header class="fixed top-0 z-50 w-full border-b border-white/10 bg-hero-start/95 backdrop-blur-md">
+    <div class="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 lg:px-12">
+        <a href="#" class="flex items-center gap-3">
+            <div class="flex size-8 items-center justify-center rounded-lg bg-primary/20 text-primary ring-1 ring-primary/50">
+                <span class="material-symbols-outlined text-2xl">hub</span>
+            </div>
+            <h2 class="text-xl font-bold tracking-tight text-white">BA FORUM</h2>
+        </a>
+        <nav class="hidden lg:flex lg:flex-1 lg:justify-center">
+            <ul class="flex items-center gap-8 text-sm font-medium text-gray-200">
+                <li><a class="transition-colors hover:text-white" href="./index.html#solutions">Solutions</a></li>
+                <li><a class="transition-colors hover:text-white" href="./index.html#lqp">LQP</a></li>
+                <li><a class="transition-colors hover:text-white" href="./index.html#cases">사례</a></li>
+                <li><a class="transition-colors hover:text-white" href="./index.html#about">About Us</a></li>
+                <li><a class="transition-colors hover:text-white" href="./index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="flex items-center gap-4">
+            <!-- <button class="hidden rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 lg:block">Login</button> -->
+            <a href="#contact" class="flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark">상담 문의</a>
+            <button class="flex size-10 items-center justify-center rounded-lg text-white hover:bg-white/10 lg:hidden">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="relative min-h-screen flex flex-col bg-hero-gradient">
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-400/5 blur-[100px] rounded-full pointer-events-none translate-y-1/2 -translate-x-1/4"></div>
+        
+        <main class="relative z-10 flex flex-col items-center justify-center flex-grow px-4 md:px-20 py-20 text-center">
+            <div class="flex flex-col max-w-6xl w-full">
+                <div class="mb-8 flex justify-center">
+                    <span class="bg-white/10 border border-white/10 text-primary text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-sm shadow-[0_0_15px_rgba(236,127,19,0.3)]">
+                        Project Portfolio
+                    </span>
+                </div>
+                <h1 class="text-white tracking-tight text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 drop-shadow-lg">
+                    실제 적용 사례
+                </h1>
+                <h2 class="text-white/80 text-lg md:text-xl lg:text-2xl font-light leading-relaxed tracking-tight max-w-3xl mx-auto mb-16">
+                    공공/교육 현장에서 <strong class="text-white font-semibold">BA FORUM</strong>이 만든 혁신적인 변화를 확인하세요.
+                </h2>
+
+                <!-- Filter Buttons -->
+                <div class="w-full">
+                    <p class="text-white/30 text-xs font-bold uppercase tracking-[0.2em] mb-8">Select Industry Sector</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                        <button onclick="filterCases('all')" class="filter-btn active group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all duration-300">
+                            <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-primary group-hover:text-white text-primary transition-all">
+                                <span class="material-symbols-outlined text-2xl">grid_view</span>
+                            </div>
+                            <h3 class="text-white text-lg font-bold">전체</h3>
+                            <span class="text-white/40 text-xs uppercase tracking-wider">All</span>
+                        </button>
+                        <button onclick="filterCases('education')" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-400/50 transition-all duration-300">
+                            <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-blue-500 group-hover:text-white text-blue-400 transition-all">
+                                <span class="material-symbols-outlined text-2xl">school</span>
+                            </div>
+                            <h3 class="text-white text-lg font-bold">교육</h3>
+                            <span class="text-white/40 text-xs uppercase tracking-wider">Education</span>
+                        </button>
+                        <button onclick="filterCases('public')" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-300">
+                            <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-emerald-500 group-hover:text-white text-emerald-400 transition-all">
+                                <span class="material-symbols-outlined text-2xl">public</span>
+                            </div>
+                            <h3 class="text-white text-lg font-bold">공공</h3>
+                            <span class="text-white/40 text-xs uppercase tracking-wider">Public</span>
+                        </button>
+                        <button onclick="filterCases('etc')" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-400/50 transition-all duration-300">
+                            <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-purple-500 group-hover:text-white text-purple-400 transition-all">
+                                <span class="material-symbols-outlined text-2xl">more_horiz</span>
+                            </div>
+                            <h3 class="text-white text-lg font-bold">기타</h3>
+                            <span class="text-white/40 text-xs uppercase tracking-wider">Others</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#cases" class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center gap-2 opacity-40 hover:opacity-100 transition-opacity cursor-pointer">
+                <span class="text-white text-[10px] uppercase tracking-[0.2em]">Explore</span>
+                <div class="h-10 w-[1px] bg-gradient-to-b from-white to-transparent"></div>
+            </a>
+        </main>
+    </section>
+
+    <!-- ========== CASE STUDIES SECTION ========== -->
+    <section id="cases" class="bg-background-dark py-20 px-4 md:px-10 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Case Studies</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">AI와 데이터 분석을 활용한 공공/교육 분야 혁신 사례</p>
+            </div>
+
+            <!-- Case Cards Grid -->
+            <div id="caseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+                <!-- Case 1: 맞춤형 교수 지원 시스템 -->
+                <div class="case-card group relative flex flex-col bg-surface-dark rounded-2xl p-6 border border-primary/30 cursor-pointer ring-1 ring-primary/10 hover:shadow-2xl hover:shadow-primary/20" 
+                     data-category="education" data-case="case1" onclick="showCaseDetail('case1')">
+                    <div class="absolute -top-3 left-4">
+                        <span class="bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Featured</span>
+                    </div>
+                    <div class="flex items-start justify-between mb-5 mt-2">
+                        <div class="size-14 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-3xl">co_present</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">맞춤형 교수 지원 시스템</h3>
+                    <p class="text-gray-500 text-sm mb-4">교육기관 | PoC 완료</p>
+                    <ul class="space-y-2 mb-6 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            30명 학생 개별 난이도 맞춤
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            교안 준비 시간 대폭 단축
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-bold">RAG</span>
+                        <span class="px-2 py-1 rounded bg-purple-500/10 text-purple-400 text-xs font-bold">mem0</span>
+                        <span class="px-2 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-bold">Agentic</span>
+                    </div>
+                </div>
+
+                <!-- Case 2: 학생 생애주기 관리 챗봇 -->
+                <div class="case-card group flex flex-col bg-surface-dark rounded-2xl p-6 border border-white/5 cursor-pointer hover:border-secondary/30" 
+                     data-category="education" data-case="case2" onclick="showCaseDetail('case2')">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="size-14 rounded-2xl bg-gradient-to-br from-secondary/20 to-transparent border border-secondary/20 flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-3xl">school</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">학생 생애주기 관리 챗봇</h3>
+                    <p class="text-gray-500 text-sm mb-4">교육기관 | PoC 완료</p>
+                    <ul class="space-y-2 mb-6 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span>
+                            12년 학습 데이터 통합 분석
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span>
+                            개인별 진로 맞춤 추천
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 rounded bg-slate-700 text-white text-xs font-bold">RAG</span>
+                        <span class="px-2 py-1 rounded bg-secondary/20 text-secondary text-xs font-bold">mem0</span>
+                        <span class="px-2 py-1 rounded bg-indigo-500/20 text-indigo-400 text-xs font-bold">LLM</span>
+                    </div>
+                </div>
+
+                <!-- Case 3: 디지털 교과서 제작 지원 -->
+                <div class="case-card group flex flex-col bg-surface-dark rounded-2xl p-6 border border-white/5 cursor-pointer hover:border-secondary/30" 
+                     data-category="education" data-case="case3" onclick="showCaseDetail('case3')">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="size-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-transparent border border-blue-500/20 flex items-center justify-center text-blue-400">
+                            <span class="material-symbols-outlined text-3xl">auto_stories</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">디지털 교과서 제작 지원</h3>
+                    <p class="text-gray-500 text-sm mb-4">교육부 | ISP/ISMP</p>
+                    <ul class="space-y-2 mb-6 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-blue-400 text-sm">check</span>
+                            교과서 콘텐츠 자동 생성
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-blue-400 text-sm">check</span>
+                            문제/해설 대량 생성
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-bold">RAG</span>
+                        <span class="px-2 py-1 rounded bg-purple-500/10 text-purple-400 text-xs font-bold">LLM</span>
+                        <span class="px-2 py-1 rounded bg-orange-500/10 text-orange-400 text-xs font-bold">Workflow</span>
+                    </div>
+                </div>
+
+                <!-- Case 4: 교육청 행정 업무 자동화 -->
+                <div class="case-card group flex flex-col bg-surface-dark rounded-2xl p-6 border border-white/5 cursor-pointer hover:border-secondary/30" 
+                     data-category="public" data-case="case4" onclick="showCaseDetail('case4')">
+                    <div class="flex items-start justify-between mb-5">
+                        <div class="size-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-transparent border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                            <span class="material-symbols-outlined text-3xl">assignment</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">교육청 행정 업무 자동화</h3>
+                    <p class="text-gray-500 text-sm mb-4">교육청 | PoC 완료</p>
+                    <ul class="space-y-2 mb-6 flex-grow">
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-emerald-400 text-sm">check</span>
+                            공문서 자동 분류
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="material-symbols-outlined text-emerald-400 text-sm">check</span>
+                            답변 초안 자동 생성
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 rounded bg-indigo-500/10 text-indigo-400 text-xs font-bold">RAG</span>
+                        <span class="px-2 py-1 rounded bg-purple-500/10 text-purple-400 text-xs font-bold">docling</span>
+                        <span class="px-2 py-1 rounded bg-pink-500/10 text-pink-400 text-xs font-bold">n8n</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ========== CASE DETAIL PANELS ========== -->
+            
+            <!-- Case 1 Detail: 맞춤형 교수 지원 시스템 -->
+            <div id="case1-detail" class="case-detail w-full bg-surface-dark rounded-3xl shadow-2xl border border-primary/20 overflow-hidden ring-1 ring-primary/10">
+                <div class="h-1.5 w-full bg-gradient-to-r from-primary via-orange-400 to-yellow-400"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+                    <!-- Left Panel -->
+                    <div class="lg:col-span-4 bg-[#1e1812] p-8 border-r border-white/5 flex flex-col gap-6">
+                        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-900/20 to-orange-900/10 border border-yellow-700/30 p-5">
+                            <h5 class="text-xs font-bold uppercase tracking-widest text-yellow-500 mb-2">Current Status</h5>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="relative flex h-3 w-3">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                                </div>
+                                <p class="text-lg font-bold text-yellow-400">실운영 전환 준비 중</p>
+                            </div>
+                            <div class="w-full bg-black/20 rounded-full h-1.5 mt-2">
+                                <div class="bg-yellow-500 h-1.5 rounded-full w-[85%]"></div>
+                            </div>
+                            <p class="text-xs text-yellow-600 mt-2 text-right font-medium">85% Ready</p>
+                        </div>
+                        <div>
+                            <h5 class="flex items-center gap-2 text-sm uppercase tracking-wider text-gray-400 font-bold mb-4">
+                                <span class="material-symbols-outlined text-[18px]">info</span> Project Info
+                            </h5>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-surface-dark p-3 rounded-xl border border-white/5">
+                                    <span class="block text-xs text-gray-400 mb-1">Duration</span>
+                                    <span class="block text-sm font-bold text-white">2 Months</span>
+                                </div>
+                                <div class="bg-surface-dark p-3 rounded-xl border border-white/5">
+                                    <span class="block text-xs text-gray-400 mb-1">Type</span>
+                                    <span class="block text-sm font-bold text-white">PoC</span>
+                                </div>
+                                <div class="col-span-2 bg-surface-dark p-3 rounded-xl border border-white/5 flex items-center gap-3">
+                                    <div class="bg-blue-900/20 p-1.5 rounded-lg text-blue-400">
+                                        <span class="material-symbols-outlined text-[20px]">account_balance</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-gray-400">Client</span>
+                                        <span class="block text-sm font-bold text-white">Central Govt. Institute</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <h5 class="flex items-center gap-2 text-sm uppercase tracking-wider text-gray-400 font-bold mb-4">
+                                <span class="material-symbols-outlined text-[18px]">layers</span> Tech Stack
+                            </h5>
+                            <div class="flex flex-col gap-3">
+                                <div class="flex items-center gap-4 p-3 rounded-xl border border-white/10 bg-surface-dark">
+                                    <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-black text-xs">RAG</div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-white">Dify Engine</span>
+                                        <span class="block text-xs text-gray-400">Knowledge Retrieval</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 p-3 rounded-xl border border-white/10 bg-surface-dark">
+                                    <div class="size-10 rounded-lg bg-purple-900/20 flex items-center justify-center text-purple-400 font-black text-xs">M0</div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-white">mem0</span>
+                                        <span class="block text-xs text-gray-400">Long-term Memory</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 p-3 rounded-xl border border-white/10 bg-surface-dark">
+                                    <div class="size-10 rounded-lg bg-blue-900/20 flex items-center justify-center text-blue-400 font-black text-xs">AG</div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-white">Agentic</span>
+                                        <span class="block text-xs text-gray-400">Autonomous Tasks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Panel -->
+                    <div class="lg:col-span-8 p-8 lg:p-10 space-y-8 overflow-y-auto max-h-[700px] hide-scrollbar">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-2xl font-bold text-white">맞춤형 교수 지원 시스템</h3>
+                            <button onclick="closeCaseDetail('case1')" class="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="p-6 rounded-2xl bg-[#1e1812] border border-white/5">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="bg-blue-900/30 p-2 rounded-lg text-blue-400">
+                                        <span class="material-symbols-outlined">history_edu</span>
+                                    </div>
+                                    <h4 class="font-bold text-white">배경 (Background)</h4>
+                                </div>
+                                <p class="text-sm text-gray-400 leading-relaxed">
+                                    대규모 강의실에서 <strong class="text-white">획일적 교육</strong> 문제 발생. 교사들이 30명 이상의 다양한 수준의 학생들에게 맞춤형 교재를 즉시 제공해야 하는 상황.
+                                </p>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-[#1e1812] border border-white/5">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="bg-red-900/30 p-2 rounded-lg text-red-400">
+                                        <span class="material-symbols-outlined">flag</span>
+                                    </div>
+                                    <h4 class="font-bold text-white">도전 과제 (Challenges)</h4>
+                                </div>
+                                <ul class="text-sm text-gray-400 space-y-2">
+                                    <li class="flex gap-2 items-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>폐쇄망 보안 환경</li>
+                                    <li class="flex gap-2 items-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>비정형 레거시 데이터</li>
+                                    <li class="flex gap-2 items-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>교육 규정 준수</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg flex items-center gap-2 text-white mb-6">
+                                <span class="bg-primary/20 text-primary p-1.5 rounded-lg"><span class="material-symbols-outlined text-[20px]">psychology</span></span>
+                                Solution Architecture
+                            </h4>
+                            <div class="bg-[#1e1812] rounded-2xl p-8 border border-white/5">
+                                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                                    <div class="flex flex-col items-center text-center gap-3">
+                                        <div class="size-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center text-gray-400">
+                                            <span class="material-symbols-outlined text-3xl">face</span>
+                                        </div>
+                                        <span class="text-xs text-gray-500">Student Analysis</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-gray-600 hidden md:block">arrow_forward</span>
+                                    <div class="flex flex-col items-center text-center gap-3">
+                                        <div class="size-16 rounded-2xl bg-primary/20 border-2 border-primary flex items-center justify-center text-primary animate-pulse">
+                                            <span class="material-symbols-outlined text-3xl">auto_awesome</span>
+                                        </div>
+                                        <span class="text-xs text-primary font-bold">AI CORE</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-gray-600 hidden md:block">arrow_forward</span>
+                                    <div class="flex flex-col items-center text-center gap-3">
+                                        <div class="size-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center text-gray-400">
+                                            <span class="material-symbols-outlined text-3xl">school</span>
+                                        </div>
+                                        <span class="text-xs text-gray-500">Teaching Guidance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg flex items-center gap-2 text-white mb-6">
+                                <span class="bg-green-900/30 text-green-400 p-1.5 rounded-lg"><span class="material-symbols-outlined text-[20px]">trending_up</span></span>
+                                Impact & Results
+                            </h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-5 rounded-2xl bg-gradient-to-br from-green-900/20 to-emerald-900/10 border border-green-800/30 flex items-center gap-4">
+                                    <div class="size-12 rounded-full bg-black/20 flex items-center justify-center text-green-400">
+                                        <span class="material-symbols-outlined text-2xl">speed</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-2xl font-black text-green-400">High</p>
+                                        <p class="text-sm text-green-300">Technical Completion</p>
+                                    </div>
+                                </div>
+                                <div class="p-5 rounded-2xl bg-gradient-to-br from-blue-900/20 to-indigo-900/10 border border-blue-800/30 flex items-center gap-4">
+                                    <div class="size-12 rounded-full bg-black/20 flex items-center justify-center text-blue-400">
+                                        <span class="material-symbols-outlined text-2xl">thumb_up</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-2xl font-black text-blue-400">Positive</p>
+                                        <p class="text-sm text-blue-300">Teacher Feedback</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 2 Detail: 학생 생애주기 관리 챗봇 -->
+            <div id="case2-detail" class="case-detail w-full bg-surface-dark rounded-3xl shadow-2xl border border-secondary/20 overflow-hidden">
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-600 via-secondary to-cyan-400"></div>
+                <div class="p-8 lg:p-10">
+                    <div class="flex justify-between items-center mb-8 pb-6 border-b border-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-secondary/20 p-3 rounded-2xl text-secondary">
+                                <span class="material-symbols-outlined text-3xl">school</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">학생 생애주기 관리 챗봇</h3>
+                                <p class="text-gray-500">Educational Data Integration Platform</p>
+                            </div>
+                        </div>
+                        <button onclick="closeCaseDetail('case2')" class="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="bg-blue-900/30 p-2 rounded-lg text-secondary">
+                                        <span class="material-symbols-outlined">history_edu</span>
+                                    </div>
+                                    <h5 class="text-lg font-bold text-white">배경</h5>
+                                </div>
+                                <div class="bg-[#1e1812] rounded-2xl p-5 border border-white/5">
+                                    <p class="text-sm text-gray-400">12년 간의 데이터 단절로 통합 분석 불가</p>
+                                    <span class="text-red-400 text-xs uppercase font-bold tracking-wider mt-2 block">Disconnected Data Silos</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="bg-red-900/30 p-2 rounded-lg text-red-400">
+                                        <span class="material-symbols-outlined">priority_high</span>
+                                    </div>
+                                    <h5 class="text-lg font-bold text-white">도전 과제</h5>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <div class="flex items-start gap-3 p-3 rounded-xl bg-[#1e1812] border border-white/5">
+                                        <span class="material-symbols-outlined text-orange-400 text-sm mt-0.5">database</span>
+                                        <div>
+                                            <p class="text-xs font-bold text-white">Data Normalization</p>
+                                            <p class="text-xs text-gray-500 mt-0.5">초-중-고 이기종 데이터 정규화</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3 p-3 rounded-xl bg-[#1e1812] border border-white/5">
+                                        <span class="material-symbols-outlined text-red-400 text-sm mt-0.5">shield_lock</span>
+                                        <div>
+                                            <p class="text-xs font-bold text-white">Strict Privacy</p>
+                                            <p class="text-xs text-gray-500 mt-0.5">민감 정보 보안 및 접근 제어</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="bg-green-900/30 p-2 rounded-lg text-green-400">
+                                    <span class="material-symbols-outlined">psychology</span>
+                                </div>
+                                <h5 class="text-lg font-bold text-white">솔루션 Flow</h5>
+                            </div>
+                            <div class="bg-[#1e1812] p-6 rounded-2xl border border-white/5 flex flex-col items-center gap-4">
+                                <div class="w-full flex items-center gap-3 bg-surface-dark p-3 rounded-xl border border-white/10">
+                                    <div class="bg-gray-700 h-10 w-10 rounded-full flex items-center justify-center text-gray-400">
+                                        <span class="material-symbols-outlined">face</span>
+                                    </div>
+                                    <div class="text-xs">
+                                        <p class="font-bold text-white">Student Query</p>
+                                        <p class="text-gray-500">"내 성적으로 갈 수 있는 학과는?"</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-gray-600">arrow_downward</span>
+                                <div class="w-full bg-surface-dark p-4 rounded-2xl border-2 border-secondary/30">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="material-symbols-outlined text-secondary">smart_toy</span>
+                                        <span class="font-bold text-sm text-secondary">AI Chatbot Engine</span>
+                                    </div>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="px-2 py-0.5 bg-slate-800 text-white rounded text-[10px] font-bold">RAG</span>
+                                        <span class="px-2 py-0.5 bg-secondary text-white rounded text-[10px] font-bold">mem0</span>
+                                        <span class="px-2 py-0.5 bg-indigo-600 text-white rounded text-[10px] font-bold">LLM</span>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-gray-600">arrow_downward</span>
+                                <div class="w-full flex items-center gap-3 bg-secondary/10 p-3 rounded-xl border border-secondary/20">
+                                    <div class="bg-surface-dark h-10 w-10 rounded-full flex items-center justify-center text-secondary">
+                                        <span class="material-symbols-outlined">recommend</span>
+                                    </div>
+                                    <div class="text-xs">
+                                        <p class="font-bold text-white">Personalized Career Path</p>
+                                        <p class="text-secondary">Customized roadmap & advice</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="bg-purple-900/30 p-2 rounded-lg text-purple-400">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                </div>
+                                <h5 class="text-lg font-bold text-white">결과</h5>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="p-4 rounded-2xl bg-[#1e1812] border border-white/5">
+                                    <p class="text-3xl font-black text-secondary mb-1">-40%</p>
+                                    <p class="text-sm font-bold text-white">Teacher Workload</p>
+                                    <div class="w-full bg-gray-800 rounded-full h-1.5 mt-3">
+                                        <div class="bg-secondary h-1.5 rounded-full" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-[#1e1812] border border-white/5">
+                                    <p class="text-3xl font-black text-green-400 mb-1">92%</p>
+                                    <p class="text-sm font-bold text-white">Student Satisfaction</p>
+                                    <div class="w-full bg-gray-800 rounded-full h-1.5 mt-3">
+                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-[#1e1812] rounded-xl p-4 border border-white/5">
+                                    <div class="flex justify-between items-end text-sm">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="text-gray-500 text-xs">Duration</span>
+                                            <span class="font-bold text-white">2 Mo</span>
+                                        </div>
+                                        <div class="flex flex-col gap-1">
+                                            <span class="text-gray-500 text-xs">Status</span>
+                                            <span class="font-bold text-green-400">PoC Done</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3 Detail: 디지털 교과서 제작 지원 -->
+            <div id="case3-detail" class="case-detail w-full bg-surface-dark rounded-3xl shadow-2xl border border-blue-500/20 overflow-hidden">
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
+                <div class="border-b border-white/5 px-8 py-6 bg-[#1e1812]">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="material-symbols-outlined text-blue-400 text-2xl">auto_stories</span>
+                            <div>
+                                <h2 class="text-white text-2xl font-bold">디지털 교과서 제작 지원</h2>
+                                <p class="text-gray-500">AI-driven transformation for National Digital Textbooks</p>
+                            </div>
+                        </div>
+                        <button onclick="closeCaseDetail('case3')" class="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/5">
+                    <div class="p-6 flex flex-col gap-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="h-8 w-8 rounded-full bg-blue-900/30 flex items-center justify-center text-blue-400">
+                                <span class="material-symbols-outlined text-sm">public</span>
+                            </div>
+                            <h3 class="text-white text-lg font-bold">배경</h3>
+                        </div>
+                        <div class="flex items-center gap-4 bg-[#1e1812] p-4 rounded-xl border border-white/5">
+                            <div class="flex flex-col items-center gap-1">
+                                <span class="material-symbols-outlined text-gray-500 text-2xl">description</span>
+                                <span class="text-[10px] font-bold text-gray-500">Static</span>
+                            </div>
+                            <span class="material-symbols-outlined text-blue-400 animate-pulse">arrow_forward</span>
+                            <div class="flex flex-col items-center gap-1">
+                                <span class="material-symbols-outlined text-blue-400 text-2xl">devices</span>
+                                <span class="text-[10px] font-bold text-blue-400">Interactive</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            National mandate for <span class="font-bold text-blue-400">Digital Transformation</span>. PDF에서 동적, 개인화된 학습 자료로 전환.
+                        </p>
+                    </div>
+                    <div class="p-6 flex flex-col gap-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="h-8 w-8 rounded-full bg-red-900/30 flex items-center justify-center text-red-400">
+                                <span class="material-symbols-outlined text-sm">warning</span>
+                            </div>
+                            <h3 class="text-white text-lg font-bold">도전 과제</h3>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 p-2 rounded bg-red-900/10 border-l-4 border-red-400">
+                                <span class="text-xs font-bold text-red-300">Strict Curriculum Alignment</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-2 rounded bg-orange-900/10 border-l-4 border-orange-400">
+                                <span class="text-xs font-bold text-orange-300">Consistent Quality Control</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-2 rounded bg-yellow-900/10 border-l-4 border-yellow-400">
+                                <span class="text-xs font-bold text-yellow-300">Massive Production Volume</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col gap-4 bg-blue-900/10 border-b-4 border-blue-500/20">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-sm">psychology</span>
+                            </div>
+                            <h3 class="text-blue-400 text-lg font-bold">솔루션 Flow</h3>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 text-xs font-bold">
+                            <div class="w-full text-center py-1.5 bg-surface-dark border border-white/10 rounded text-gray-400">Textbook Data</div>
+                            <span class="material-symbols-outlined text-gray-600 text-sm">arrow_downward</span>
+                            <div class="w-full flex items-center justify-center gap-2 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md">
+                                <span class="material-symbols-outlined text-sm">settings</span>
+                                AI Generation Engine
+                            </div>
+                            <span class="material-symbols-outlined text-gray-600 text-sm">arrow_downward</span>
+                            <div class="grid grid-cols-2 gap-2 w-full">
+                                <div class="text-center py-1.5 bg-green-900/20 text-green-400 rounded border border-green-800/30">Q&A</div>
+                                <div class="text-center py-1.5 bg-purple-900/20 text-purple-400 rounded border border-purple-800/30">Explanations</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col gap-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="h-8 w-8 rounded-full bg-green-900/30 flex items-center justify-center text-green-400">
+                                <span class="material-symbols-outlined text-sm">trending_up</span>
+                            </div>
+                            <h3 class="text-white text-lg font-bold">주요 성과</h3>
+                        </div>
+                        <div class="flex items-end gap-3 h-20 border-b border-gray-700 pb-0 px-2">
+                            <div class="w-1/3 bg-gray-700 rounded-t h-[30%]"></div>
+                            <div class="w-1/3 bg-gray-600 rounded-t h-[50%]"></div>
+                            <div class="w-1/3 bg-green-500 rounded-t h-full relative">
+                                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-green-900/50 text-green-300 text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
+                                    +300% Speed
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-xs font-bold text-gray-500">
+                            <span>Manual</span>
+                            <span>Hybrid</span>
+                            <span class="text-green-400">AI Auto</span>
+                        </div>
+                        <p class="text-gray-400 text-xs mt-2 border-t border-white/5 pt-3">
+                            Consistent quality across <span class="font-bold text-white">12 subjects</span>.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-[#1e1812] border-t border-white/5 p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px]">info</span> Project Information
+                            </h4>
+                            <div class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 bg-surface-dark p-4 rounded-lg border border-white/5">
+                                <div class="text-gray-500 text-sm">Type</div>
+                                <div class="text-white text-sm font-bold">ISP/ISMP Strategy</div>
+                                <div class="text-gray-500 text-sm">Client</div>
+                                <div class="text-white text-sm font-bold">Ministry of Education (교육부)</div>
+                                <div class="text-gray-500 text-sm">Status</div>
+                                <div class="flex items-center gap-2">
+                                    <span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    <span class="text-white text-sm font-bold">Consulting Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px]">code</span> Technology Stack
+                            </h4>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="flex items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 py-3">
+                                    <span class="material-symbols-outlined text-blue-400">database</span>
+                                    <div class="flex flex-col">
+                                        <span class="text-white text-xs font-bold">RAG</span>
+                                        <span class="text-[10px] text-gray-500">Retrieval Augmented</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 py-3">
+                                    <span class="material-symbols-outlined text-purple-400">smart_toy</span>
+                                    <div class="flex flex-col">
+                                        <span class="text-white text-xs font-bold">LLM</span>
+                                        <span class="text-[10px] text-gray-500">GPT-4 Engine</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 py-3">
+                                    <span class="material-symbols-outlined text-orange-400">account_tree</span>
+                                    <div class="flex flex-col">
+                                        <span class="text-white text-xs font-bold">Workflow</span>
+                                        <span class="text-[10px] text-gray-500">n8n Automation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 4 Detail: 교육청 행정 업무 자동화 -->
+            <div id="case4-detail" class="case-detail w-full bg-surface-dark rounded-3xl shadow-2xl border border-emerald-500/20 overflow-hidden">
+                <div class="h-1.5 w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
+                <div class="bg-[#1e1812] px-8 py-5 flex items-center justify-between border-b border-white/5">
+                    <div class="flex items-center gap-4">
+                        <div class="p-2 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg shadow-lg">
+                            <span class="material-symbols-outlined text-white text-[24px]">assignment</span>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-xl text-white">교육청 행정 업무 자동화</h3>
+                            <p class="text-xs text-gray-500 font-medium">Admin Process Automation</p>
+                        </div>
+                    </div>
+                    <button onclick="closeCaseDetail('case4')" class="text-gray-400 hover:text-red-400 p-2 hover:bg-red-900/20 rounded-full transition-colors">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="p-8 grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    <div class="lg:col-span-4 flex flex-col gap-8">
+                        <div class="space-y-4">
+                            <h4 class="flex items-center gap-2 text-sm font-bold text-white uppercase tracking-wider">
+                                <span class="flex items-center justify-center w-6 h-6 rounded bg-gray-700 text-gray-300">
+                                    <span class="material-symbols-outlined text-[16px]">history</span>
+                                </span>
+                                배경 (Background)
+                            </h4>
+                            <div class="bg-[#1e1812] p-5 rounded-2xl border border-white/5">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-orange-400 mt-1">warning</span>
+                                        <div>
+                                            <span class="block font-bold text-white text-sm mb-1">매일 쏟아지는 공문서</span>
+                                            <p class="text-xs text-gray-400">담당자당 하루 평균 50+건 처리</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-orange-400 mt-1">search_off</span>
+                                        <div>
+                                            <span class="block font-bold text-white text-sm mb-1">유사 사례 검색 난항</span>
+                                            <p class="text-xs text-gray-400">키워드 검색 한계로 중복 업무 발생</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="flex items-center gap-2 text-sm font-bold text-white uppercase tracking-wider">
+                                <span class="flex items-center justify-center w-6 h-6 rounded bg-red-900/30 text-red-400">
+                                    <span class="material-symbols-outlined text-[16px]">flag</span>
+                                </span>
+                                도전 과제 (Challenges)
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="bg-[#1e1812] p-3 rounded-lg border border-red-900/20 flex gap-3 items-center">
+                                    <div class="bg-red-900/30 p-2 rounded-md text-red-400 shrink-0">
+                                        <span class="material-symbols-outlined text-[20px]">description</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-white">HWP 포맷 난이도</span>
+                                        <span class="text-xs text-gray-500">비정형 한글 문서 구조화</span>
+                                    </div>
+                                </li>
+                                <li class="bg-[#1e1812] p-3 rounded-lg border border-red-900/20 flex gap-3 items-center">
+                                    <div class="bg-red-900/30 p-2 rounded-md text-red-400 shrink-0">
+                                        <span class="material-symbols-outlined text-[20px]">speed</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-white">대용량 데이터 검색</span>
+                                        <span class="text-xs text-gray-500">수십만 건 실시간 검색 속도</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 flex flex-col gap-6">
+                        <div class="bg-gradient-to-b from-emerald-900/20 to-[#1e1812] rounded-3xl p-6 border border-emerald-900/30 h-full flex flex-col">
+                            <h4 class="flex items-center gap-2 text-sm font-bold text-emerald-400 mb-6 uppercase tracking-wider">
+                                <span class="flex items-center justify-center w-6 h-6 rounded bg-emerald-900/50 text-emerald-400">
+                                    <span class="material-symbols-outlined text-[16px]">psychology</span>
+                                </span>
+                                솔루션 아키텍처
+                            </h4>
+                            <div class="flex-1 flex flex-col items-center justify-center my-4">
+                                <div class="flex items-center gap-4 w-full">
+                                    <div class="flex flex-col items-center gap-2 text-center flex-1">
+                                        <div class="w-16 h-16 bg-surface-dark rounded-2xl shadow-md border border-white/10 flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-gray-400 text-3xl">upload_file</span>
+                                        </div>
+                                        <span class="text-xs font-bold text-gray-400">공문서 (HWP)</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-gray-600">arrow_forward</span>
+                                    <div class="flex flex-col items-center gap-2 text-center flex-1">
+                                        <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-lg shadow-emerald-500/30 flex flex-col items-center justify-center text-white">
+                                            <span class="material-symbols-outlined text-3xl mb-1">neurology</span>
+                                            <span class="text-[10px] font-bold opacity-80">LLM Engine</span>
+                                        </div>
+                                        <span class="text-xs font-bold text-emerald-400">분석 & 검색</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-gray-600">arrow_forward</span>
+                                    <div class="flex flex-col items-center gap-2 text-center flex-1">
+                                        <div class="w-16 h-16 bg-surface-dark rounded-2xl shadow-md border border-green-900/30 flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-green-400 text-3xl">edit_document</span>
+                                        </div>
+                                        <span class="text-xs font-bold text-gray-400">답변 초안</span>
+                                    </div>
+                                </div>
+                                <div class="mt-8 bg-surface-dark rounded-xl p-4 w-full border border-white/5">
+                                    <h5 class="font-bold text-white text-sm mb-2">Key Process</h5>
+                                    <ol class="text-xs text-gray-400 space-y-1.5 list-decimal list-inside">
+                                        <li><strong class="text-white">Docling</strong>이 HWP 문서를 텍스트로 완벽 변환</li>
+                                        <li><strong class="text-white">Vector DB</strong>에서 유사 민원/행정 사례 즉시 검색</li>
+                                        <li><strong class="text-white">LLM (RAG)</strong>이 문맥을 파악하여 최적의 답변 생성</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-3 flex flex-col gap-6">
+                        <div class="space-y-4">
+                            <h4 class="flex items-center gap-2 text-sm font-bold text-green-400 uppercase tracking-wider">
+                                <span class="flex items-center justify-center w-6 h-6 rounded bg-green-900/30 text-green-400">
+                                    <span class="material-symbols-outlined text-[16px]">trending_up</span>
+                                </span>
+                                도입 효과 (Results)
+                            </h4>
+                            <div class="grid grid-cols-1 gap-3">
+                                <div class="bg-[#1e1812] p-4 rounded-xl border-l-4 border-green-500 flex items-center justify-between">
+                                    <div>
+                                        <span class="block text-2xl font-black text-white">50<span class="text-lg font-normal text-gray-500">%</span></span>
+                                        <span class="text-xs text-gray-500 uppercase font-semibold">Time Saved</span>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center text-green-400">
+                                        <span class="material-symbols-outlined">timer</span>
+                                    </div>
+                                </div>
+                                <div class="bg-[#1e1812] p-4 rounded-xl border-l-4 border-blue-500 flex items-center justify-between">
+                                    <div>
+                                        <span class="block text-2xl font-black text-white">95<span class="text-lg font-normal text-gray-500">%</span></span>
+                                        <span class="text-xs text-gray-500 uppercase font-semibold">Accuracy</span>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center text-blue-400">
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-white/5 pt-6 space-y-4">
+                            <h4 class="text-sm font-bold text-white">Technology Stack</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-gray-800 text-gray-200 rounded-lg text-xs font-semibold border border-gray-700">RAG System</span>
+                                <span class="px-3 py-1.5 bg-gray-800 text-gray-200 rounded-lg text-xs font-semibold border border-gray-700">Docling</span>
+                                <span class="px-3 py-1.5 bg-gray-800 text-gray-200 rounded-lg text-xs font-semibold border border-gray-700">n8n</span>
+                                <span class="px-3 py-1.5 bg-gray-800 text-gray-200 rounded-lg text-xs font-semibold border border-gray-700">Vector DB</span>
+                            </div>
+                        </div>
+                        <div class="bg-[#1e1812] rounded-xl p-4 mt-auto border border-white/5">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs text-gray-500">Duration</span>
+                                <span class="text-xs font-bold text-white">2 Months (PoC)</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-[#0f0d0a] border-t border-white/5 py-12 px-4 md:px-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="text-2xl font-bold text-white mb-2">BA FORUM</h3>
+                <p class="text-gray-500 text-sm">AI & Data Analytics Consulting</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined">mail</span>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined">language</span>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined">description</span>
+                </a>
+            </div>
+            <p class="text-gray-600 text-xs">© 2025 BA FORUM. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter cases by category
+        function filterCases(category) {
+            const cards = document.querySelectorAll('.case-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.filter-btn').classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Close any open detail panels
+            document.querySelectorAll('.case-detail').forEach(detail => {
+                detail.classList.remove('active');
+            });
+        }
+
+        // Show case detail panel
+        function showCaseDetail(caseId) {
+            // Close all detail panels first
+            document.querySelectorAll('.case-detail').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Open the selected one
+            const detailPanel = document.getElementById(caseId + '-detail');
+            if (detailPanel) {
+                detailPanel.classList.add('active');
+                // Scroll to detail panel
+                setTimeout(() => {
+                    detailPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+
+        // Close case detail panel
+        function closeCaseDetail(caseId) {
+            const detailPanel = document.getElementById(caseId + '-detail');
+            if (detailPanel) {
+                detailPanel.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
