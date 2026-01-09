@@ -54,22 +54,17 @@
 <!-- ========== NAVIGATION ========== -->
 <header class="fixed top-0 z-50 w-full border-b border-white/10 bg-hero-start/95 backdrop-blur-md">
     <div class="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 lg:px-12">
-        <a href="#" class="flex items-center gap-3">
-            <div class="flex size-8 items-center justify-center rounded-lg bg-primary/20 text-primary ring-1 ring-primary/50">
-                <span class="material-symbols-outlined text-2xl">hub</span>
-            </div>
-            <h2 class="text-xl font-bold tracking-tight text-white">BA FORUM</h2>
-        </a>
+        <a href="index.html" class="flex items-center gap-3"><img src="images/logo_w2.png" style="height:50px;" border="0" alt="BA FORUM logo"></a>
         <nav class="hidden lg:flex lg:flex-1 lg:justify-center">
             <ul class="flex items-center gap-8 text-sm font-medium text-gray-200">
-                <li><a class="transition-colors hover:text-white" href="./index.html#solutions">Solutions</a></li>
-                <li><a class="transition-colors hover:text-white" href="./index.html#lqp">LQP</a></li>
-                <li><a class="transition-colors hover:text-white" href="./index.html#cases">사례</a></li>
+                <li><a class="transition-colors hover:text-white" href="solutions.html">Solutions</a></li>
+                <li><a class="transition-colors hover:text-white" href="lqp.html">LQP</a></li>
+                <li><a class="transition-colors hover:text-white" href="case-studies.html">사례</a></li>
                 <li><a class="transition-colors hover:text-white" href="./index.html#about">About Us</a></li>
                 <li><a class="transition-colors hover:text-white" href="./index.html#contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="flex items-center gap-4">
+       <div class="flex items-center gap-4">
             <!-- <button class="hidden rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 lg:block">Login</button> -->
             <a href="#contact" class="flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark">상담 문의</a>
             <button class="flex size-10 items-center justify-center rounded-lg text-white hover:bg-white/10 lg:hidden">
@@ -102,28 +97,28 @@
                 <div class="w-full">
                     <p class="text-white/30 text-xs font-bold uppercase tracking-[0.2em] mb-8">Select Industry Sector</p>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                        <button onclick="filterCases('all')" class="filter-btn active group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all duration-300">
+                        <button onclick="filterCases('all'); location.href='#cases';" class="filter-btn active group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all duration-300">
                             <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-primary group-hover:text-white text-primary transition-all">
                                 <span class="material-symbols-outlined text-2xl">grid_view</span>
                             </div>
                             <h3 class="text-white text-lg font-bold">전체</h3>
                             <span class="text-white/40 text-xs uppercase tracking-wider">All</span>
                         </button>
-                        <button onclick="filterCases('education')" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-400/50 transition-all duration-300">
+                        <button onclick="filterCases('education'); location.href='#cases';" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-400/50 transition-all duration-300">
                             <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-blue-500 group-hover:text-white text-blue-400 transition-all">
                                 <span class="material-symbols-outlined text-2xl">school</span>
                             </div>
                             <h3 class="text-white text-lg font-bold">교육</h3>
                             <span class="text-white/40 text-xs uppercase tracking-wider">Education</span>
                         </button>
-                        <button onclick="filterCases('public')" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-300">
+                        <button onclick="filterCases('public'); location.href='#cases';" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-300">
                             <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-emerald-500 group-hover:text-white text-emerald-400 transition-all">
                                 <span class="material-symbols-outlined text-2xl">public</span>
                             </div>
                             <h3 class="text-white text-lg font-bold">공공</h3>
                             <span class="text-white/40 text-xs uppercase tracking-wider">Public</span>
                         </button>
-                        <button onclick="filterCases('etc')" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-400/50 transition-all duration-300">
+                        <button onclick="filterCases('etc'); location.href='#cases';" class="filter-btn group relative flex flex-col items-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-400/50 transition-all duration-300">
                             <div class="mb-4 p-3 rounded-full bg-white/5 ring-1 ring-white/10 group-hover:bg-purple-500 group-hover:text-white text-purple-400 transition-all">
                                 <span class="material-symbols-outlined text-2xl">more_horiz</span>
                             </div>
@@ -899,27 +894,19 @@
         </div>
     </section>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-[#0f0d0a] border-t border-white/5 py-12 px-4 md:px-20">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <h3 class="text-2xl font-bold text-white mb-2">BA FORUM</h3>
-                <p class="text-gray-500 text-sm">AI & Data Analytics Consulting</p>
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="text-gray-500 hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined">mail</span>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined">language</span>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined">description</span>
-                </a>
-            </div>
-            <p class="text-gray-600 text-xs">© 2025 BA FORUM. All rights reserved.</p>
+   <!-- ========== FOOTER ========== -->
+<footer class="w-full border-t border-gray-200 bg-white py-8">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center">
+                <img src="images/logo_gray.png" style="height:30pt" border="0" alt="BA FORUM logo small">            
         </div>
-    </footer>
+        <div class="text-sm text-gray-500">© 2024 BA FORUM. All rights reserved. Secure Enterprise AI Solutions.</div>
+        <div class="flex gap-6 text-sm text-gray-500">
+            <a href="#" class="hover:text-gray-900">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-900">Terms of Service</a>
+        </div>
+    </div>
+</footer>
 
     <script>
         // Filter cases by category
